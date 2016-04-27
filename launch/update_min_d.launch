@@ -1,0 +1,32 @@
+<launch>
+	
+	<arg name="inc" default="0.05"/>
+	<arg name="tide" default="10" />
+	
+	<arg name="update_min_d" default="0.05" />
+	
+	<arg name="param_start" default="$(arg update_min_d)"/>
+	<arg name="param_end" default="0.5"/>
+	
+	<arg name="pos_x" default="4.4159"/>
+	<arg name="pos_y" default="-0.5125"/>
+	<arg name="ori_z" default="-0.0117"/>
+	<arg name="ori_w" default="0.9999"/>
+
+	<node pkg="parameter_analyzer" type="update_min_d" name="parameter_analyzer" output="screen">
+	  
+		<param name="update_min_d" value="$(arg param_start)"/>  
+		
+		<param name="tide_count" value="$(arg tide)"/> 
+		<param name="increment" value="$(arg inc)"/>
+		
+		<param name="param_start" value="$(arg param_start)"/>
+		<param name="param_end" value="$(arg param_end)"/>
+		
+		<param name="goal_pos_x" value="$(arg pos_x)"/>
+		<param name="goal_pos_y" value="$(arg pos_y)"/>
+		<param name="goal_ori_z" value="$(arg ori_z)"/>
+		<param name="goal_ori_w" value="$(arg ori_w)"/>
+		
+	</node>
+</launch>
